@@ -13,7 +13,7 @@ const app=express()
 
 const connectDB = require('./db/connect')
 
-const CustomError = require('./errors/CustomError')
+const CustomError = require('./error/CustomError')
 const NotFoundMiddleware = require('./middlewares/NotFound.js')
 const ErrorHandlerMiddleware = require('./middlewares/ErrorHandler.js')
 
@@ -21,9 +21,17 @@ app.use(cors({
      origin: 'http://localhost:5173', credentials: true 
 }))
 app.use(cookieParser())
-app.use(express.json()) 
+app.use(express.json({ extended: false }));
 app.use(session({
-     secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true 
+    secret: process.env.SESSION_SECRET, 
+    resave: false, 
+    saveUninitialized: false ,
+    cookie: {
+       maxAge: 1000 * 60 * 60 * 24, 
+       secure: true, 
+       httpOnly: true,
+       sameSite:'lax'
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,14 +47,13 @@ app.use(NotFoundMiddleware)
 
 const port = process.env.PORT || 3000
 const mongoURI = process.env.MONGO_URI
-const envMode = process.env.NODE_ENV.trim() || "PRODUCTION"
 
 const start = async () => {
     try {
         await connectDB(mongoURI)
         console.log('Connected to database')
-        server.listen(
-            port , ()=>{ console.log(`Server is listening to port - ${port} in ${envMode} mode`)}
+        app.listen(
+            port , ()=>{ console.log(`Server is listening to port - ${port}`)}
         )
         } catch (error) {
         console.log('An error occured while connecting to database ', error)

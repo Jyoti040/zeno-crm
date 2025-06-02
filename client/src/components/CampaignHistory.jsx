@@ -1,17 +1,13 @@
-// src/components/CampaignHistory.jsx
 import React, { useState, useEffect } from 'react';
-import { campaignApi } from '../services/api.js'; // Import campaign API service
+import { campaignApi } from '../services/api.js'; 
 
 /**
  * CampaignHistory Component
  * Displays a list of past campaigns with their delivery statistics.
  */
 const CampaignHistory = () => {
-  // State to store the list of campaigns
   const [campaigns, setCampaigns] = useState([]);
-  // State for loading indicator
   const [loading, setLoading] = useState(true);
-  // State for error messages
   const [error, setError] = useState(null);
 
   // Effect to fetch campaigns when the component mounts
@@ -20,7 +16,6 @@ const CampaignHistory = () => {
       try {
         const res = await campaignApi.getCampaigns();
         // Sort campaigns by creation date, with the most recent at the top
-        console.log("in campaugn history ",res.data)
         const sortedCampaigns = res.data.campaigns.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         setCampaigns(sortedCampaigns);
       } catch (err) {

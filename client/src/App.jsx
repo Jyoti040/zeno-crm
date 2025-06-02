@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { AuthProvider, useAuth } from './context/AuthContext.jsx' // Import AuthProvider and useAuth
-import Navbar from './components/Navbar.jsx'; // Import the Navbar component
-import GoogleAuthButton from './components/Auth.jsx'; // Import the GoogleAuthButton
+import { AuthProvider, useAuth } from './context/AuthContext.jsx'
+import Navbar from './components/Navbar.jsx'; 
+import GoogleAuthButton from './components/Auth.jsx';
 import CustomerIngestion from './components/CustomerIngestion.jsx';
 import OrderIngestion from './components/OrderIngestion.jsx';
 import SegmentBuilder from './components/SegmentBuilder.jsx';

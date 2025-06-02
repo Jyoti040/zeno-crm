@@ -1,9 +1,6 @@
 const Customer = require('../models/Customer');
-const CustomAPIError = require('../errors/CustomError')
+const CustomAPIError = require('../error/CustomError')
 
-// @route   POST /api/customers
-// @desc    Ingest a new customer
-// @access  Public (should be protected)
 const ingestCustomer = async (req, res , next) => {
     const { name, email } = req.body;
     try {
@@ -30,9 +27,6 @@ const ingestCustomer = async (req, res , next) => {
     }
 };
 
-// @route   GET /api/customers
-// @desc    Get all customers
-// @access  Public (should be protected)
 const getAllCustomers = async (req, res,next) => {
     try {
         const customers = await Customer.find();
@@ -47,9 +41,6 @@ const getAllCustomers = async (req, res,next) => {
     }
 };
 
-// @route   GET /api/customers/:id
-// @desc    Get customer by ID
-// @access  Public (should be protected)
 const getCustomerById = async (req, res,next) => {
     try {
         const customer = await Customer.findById(req.params.id);

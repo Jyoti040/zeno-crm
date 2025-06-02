@@ -1,5 +1,5 @@
-const { envMode } = require('../app')
-const CustomAPIError = require('../errors/CustomError')
+const { envMode } = require('../index')
+const CustomAPIError = require('../error/CustomError')
 
 const ErrorHandler = (err,req,res,next)=>{
 

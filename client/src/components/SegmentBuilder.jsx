@@ -1,4 +1,3 @@
-// src/components/SegmentBuilder.jsx
 import React, { useState } from 'react';
 import { campaignApi } from '../services/api.js'; // Import campaign API service
 
@@ -7,23 +6,15 @@ import { campaignApi } from '../services/api.js'; // Import campaign API service
  * Allows users to define audience segments using flexible rule logic.
  */
 const SegmentBuilder = () => {
-    // State for the segment name
     const [segmentName, setSegmentName] = useState('');
-    // State for the rules, structured as an array of rule groups.
-    // Each rule group can have its own logic (AND/OR) and an array of conditions.
     const [rules, setRules] = useState([
         { logic: 'AND', conditions: [{ field: 'totalSpend', operator: '>', value: 1000 }] }
     ]);
-    // State to store the audience size preview
     const [audienceSize, setAudienceSize] = useState(0);
-    // State for displaying messages (success/error)
     const [message, setMessage] = useState('');
 
     /**
      * Handles changes to a specific condition within a rule group.
-     * @param {number} groupIndex - The index of the rule group.
-     * @param {number} conditionIndex - The index of the condition within the group.
-     * @param {Object} e - The event object from the input change.
      */
     const handleRuleChange = (groupIndex, conditionIndex, e) => {
         const newRules = [...rules];
@@ -33,7 +24,6 @@ const SegmentBuilder = () => {
 
     /**
      * Adds a new empty condition to a specified rule group.
-     * @param {number} groupIndex - The index of the rule group to add the condition to.
      */
     const addCondition = (groupIndex) => {
         const newRules = [...rules];
@@ -43,8 +33,6 @@ const SegmentBuilder = () => {
 
     /**
      * Removes a condition from a specified rule group.
-     * @param {number} groupIndex - The index of the rule group.
-     * @param {number} conditionIndex - The index of the condition to remove.
      */
     const removeCondition = (groupIndex, conditionIndex) => {
         const newRules = [...rules];
@@ -61,7 +49,6 @@ const SegmentBuilder = () => {
 
     /**
      * Removes a rule group from the rules array.
-     * @param {number} groupIndex - The index of the rule group to remove.
      */
     const removeRuleGroup = (groupIndex) => {
         const newRules = [...rules];
@@ -71,8 +58,6 @@ const SegmentBuilder = () => {
 
     /**
      * Handles changes to the logic (AND/OR) for a specific rule group.
-     * @param {number} groupIndex - The index of the rule group.
-     * @param {Object} e - The event object.
      */
     const handleLogicChange = (groupIndex, e) => {
         const newRules = [...rules];

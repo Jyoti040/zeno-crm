@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const orderSchema = new mongoose.Schema({
+const OrderSchema = new mongoose.Schema({
     customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
     amount: { type: Number, required: true },
     products: [{
@@ -13,5 +13,5 @@ const orderSchema = new mongoose.Schema({
     timestamps:true
 })
 
-const Order = mongoose.model('Order',orderSchema) 
+const Order = mongoose.model('Order',OrderSchema) 
 module.exports = Order

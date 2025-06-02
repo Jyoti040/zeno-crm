@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const customerSchema = new mongoose.Schema({
+    googleId: { type: String, unique: true, sparse: true },
     name: { type: String, required: true },
     email: { 
         type : String ,
@@ -20,5 +21,5 @@ const customerSchema = new mongoose.Schema({
     timestamps:true
 })
 
-const Customer = mongoose.model('User',customerSchema) 
+const Customer = mongoose.model('Customer',customerSchema) 
 module.exports = Customer

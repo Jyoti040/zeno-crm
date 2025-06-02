@@ -1,6 +1,5 @@
-// src/components/Navbar.jsx
 import React from 'react';
-import { useAuth } from '../context/AuthContext' // Import useAuth hook
+import { useAuth } from '../context/AuthContext'
 
 /**
  * Navbar Component

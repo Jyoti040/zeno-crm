@@ -1,4 +1,3 @@
-// src/components/OrderIngestion.jsx
 import React, { useState, useEffect } from 'react';
 import { orderApi, customerApi } from '../services/api.js'; // Import API services
 
@@ -7,13 +6,9 @@ import { orderApi, customerApi } from '../services/api.js'; // Import API servic
  * Provides a form to add new order data, linking to existing customers.
  */
 const OrderIngestion = () => {
-  // State for order form data
   const [order, setOrder] = useState({ customerId: '', amount: '', products: [{ name: '', quantity: '', price: '' }] });
-  // State for displaying messages
   const [message, setMessage] = useState('');
-  // State to store the list of available customers
   const [customers, setCustomers] = useState([]);
-  // State for loading indicator
   const [loadingCustomers, setLoadingCustomers] = useState(true);
 
   // Fetch customers on component mount
@@ -34,17 +29,13 @@ const OrderIngestion = () => {
   }, []);
 
   /**
-   * Handles changes to the main order form fields (customerId, amount).
-   * @param {Object} e - The event object.
-   */
+   * Handles changes to the main order form fields (customerId, amount).   */
   const handleChange = (e) => {
     setOrder({ ...order, [e.target.name]: e.target.value });
   };
 
   /**
    * Handles changes to product-specific input fields.
-   * @param {number} index - The index of the product being edited.
-   * @param {Object} e - The event object.
    */
   const handleProductChange = (index, e) => {
     const newProducts = [...order.products];
@@ -64,7 +55,6 @@ const OrderIngestion = () => {
 
   /**
    * Removes a product row from the order form.
-   * @param {number} index - The index of the product to remove.
    */
   const removeProduct = (index) => {
     const newProducts = order.products.filter((_, i) => i !== index);
@@ -74,7 +64,6 @@ const OrderIngestion = () => {
   /**
    * Handles the form submission.
    * Sends the order data to the backend API.
-   * @param {Object} e - The event object.
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
