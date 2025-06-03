@@ -54,8 +54,8 @@ export const AuthProvider = ({ children }) => {
    */
   const login = () => {
     // Redirect to your backend's Google OAuth initiation route
-    // This assumes your backend has a route like /auth/google that starts the OAuth flow
-    window.location.href = 'http://localhost:5000/auth/google';
+   // window.location.href = 'http://localhost:5000/auth/google';
+    window.location.href = 'https://zeno-crm-baackend.onrender.com/auth/google';
     // After successful OAuth, Google will redirect back to your backend,
     // and your backend should then redirect back to your frontend (e.g., http://localhost:5173)
     // At that point, `checkAuthStatus` will automatically run again due to `useEffect`

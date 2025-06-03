@@ -16,7 +16,7 @@ const NotFoundMiddleware = require('./middlewares/NotFound.js')
 const ErrorHandlerMiddleware = require('./middlewares/ErrorHandler.js')
 
 app.use(cors({
-     origin: ['http://localhost:5173','https://zeno-crm.onrender.com'], credentials: true 
+     origin: ['http://localhost:5173','https://zeno-crm.onrender.com','http://localhost:10000/'], credentials: true 
 }))
 app.use(cookieParser())
 app.use(express.json({ extended: false }));
