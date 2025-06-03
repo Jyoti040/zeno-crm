@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5000'; 
-const API_URL_DEPLOYED ='https://zeno-crm-baackend.onrender.com/'
+const API_URL_DEPLOYED ='https://zeno-crm-baackend.onrender.com'
 
 // Create an Axios instance with a base URL and default headers.
 const api = axios.create({

@@ -45,7 +45,9 @@ export const AuthProvider = ({ children }) => {
 
   // On component mount, check authentication status
   useEffect(() => {
-      checkAuthStatus();
+      setTimeout(()=>{
+        checkAuthStatus()
+      },200)
   }, []); // Empty dependency array means this runs once on mount
 
   /**
