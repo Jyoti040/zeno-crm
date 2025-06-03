@@ -9,12 +9,18 @@ router.get('/google/callback', passport.authenticate('google', {
   failureRedirect: '/'
 }));
 
+router.post('/login',
+  passport.authenticate("local", {
+  successRedirect: 'http://localhost:5173/dashboard',
+  failureRedirect: '/'
+})
+)
 router.get('/logout',isAuthenticated, (req, res) => {
   req.logout(() => res.redirect('/'));
 });
 
 router.get("/status", (req, res) => {
- // console.log("in auth status ",req.isAuthenticated())
+ console.log("in auth status ",req.user)
   if (req.isAuthenticated()) {
     return res.json({ isAuthenticated: true, user: req.user });
   }

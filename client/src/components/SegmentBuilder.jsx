@@ -95,7 +95,8 @@ const SegmentBuilder = () => {
 
         try {
             const res = await campaignApi.createSegment({ name: segmentName, rules });
-            setMessage(`Segment "${res.data.name}" saved successfully! Audience size: ${res.data.audienceSize}`);
+            console.log("segment result",res.data)
+            setMessage(`Segment "${res.data.segment.name}" saved successfully! Audience size: ${res.data.segment.audienceSize}`);
             // Reset form after saving
             setSegmentName('');
             setRules([{ logic: 'AND', conditions: [{ field: 'totalSpend', operator: '>', value: 1000 }] }]);

@@ -39,12 +39,14 @@ passport.use(
 
 // Serialize user into the session (what to store in the session cookie)
 passport.serializeUser((user, done) => {
-    done(null, user.id); // Store only the user ID in the session
+  console.log("in serialise ",user)
+    done(null, user._id); // Store only the user ID in the session
 });
 
 // Deserialize user from the session (retrieve user object from ID in session)
 passport.deserializeUser(async (id, done) => {
     try {
+       console.log("in deseialise ",id)
         const user = await Customer.findById(id);
         done(null, user); // Attach the full user object to req.user
     } catch (err) {

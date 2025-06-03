@@ -16,7 +16,7 @@ function AppContent() {
   // State to manage the currently displayed page
   const [currentPage, setCurrentPage] = useState('home');
   // Use the authentication hook to get user ID and loading state
-  const { userId, loading: authLoading, error: authError } = useAuth();
+  const { user, loading: authLoading, error: authError } = useAuth();
 
   // If authentication is still loading, display a loading message
   if (authLoading) {
@@ -39,7 +39,7 @@ function AppContent() {
   }
 
   // If no user is logged in, display the Google Auth button
-  if (!userId) {
+  if (!user) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-8">Welcome to Mini CRM</h1>
@@ -68,8 +68,8 @@ function AppContent() {
           <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] bg-gray-50 p-4">
             <h1 className="text-4xl font-extrabold text-gray-900 mb-8 text-center">Mini CRM Dashboard</h1>
             <p className="text-lg text-gray-700 mb-6 text-center">Select an option from the navigation to get started.</p>
-            {userId && (
-                <p className="text-sm text-gray-500">Logged in as User ID: <span className="font-mono text-xs break-all">{userId}</span></p>
+            {user && (
+                <p className="text-sm text-gray-500">Logged in as User email: <span className="font-mono text-xs break-all">{user.email}</span></p>
             )}
           </div>
         );

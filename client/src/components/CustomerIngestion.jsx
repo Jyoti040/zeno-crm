@@ -8,7 +8,7 @@ import { customerApi } from '../services/api.js'; // Import the customer API ser
  */
 const CustomerIngestion = () => {
   // State to hold customer form data
-  const [customer, setCustomer] = useState({ name: '', email: '', phone: '', address: '' });
+  const [customer, setCustomer] = useState({ name: '', email: '' });
   // State for displaying messages (success/error) to the user
   const [message, setMessage] = useState('');
 
@@ -35,7 +35,7 @@ const CustomerIngestion = () => {
       const res = await customerApi.addCustomer(customer);
       setMessage(`Customer added successfully!`); // Display success message
       // Clear the form fields after successful submission
-      setCustomer({ name: '', email: '', phone: '', address: '' });
+      setCustomer({ name: '', email: '' });
     } catch (err) {
       // Display error message if API call fails
       setMessage(`Error: ${err.response?.data?.msg || 'Failed to add customer'}`);
@@ -74,7 +74,7 @@ const CustomerIngestion = () => {
           />
         </div>
         {/* Phone Input */}
-        <div>
+        {/* <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
           <input
             type="text"
@@ -84,9 +84,9 @@ const CustomerIngestion = () => {
             onChange={handleChange}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           />
-        </div>
+        </div> */}
         {/* Address Input */}
-        <div>
+        {/* <div>
           <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
           <input
             type="text"
@@ -96,7 +96,7 @@ const CustomerIngestion = () => {
             onChange={handleChange}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
           />
-        </div>
+        </div> */}
         {/* Submit Button */}
         <button
           type="submit"

@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext'
  * It dynamically shows the logged-in user ID.
  */
 const Navbar = ({ setCurrentPage }) => {
-  const { userId, logout } = useAuth(); // Get userId and logout function from AuthContext
+  const { user, logout } = useAuth(); // Get userId and logout function from AuthContext
 
   return (
     <nav className="bg-white shadow-md p-4 flex flex-col sm:flex-row justify-between items-center">
@@ -50,9 +50,9 @@ const Navbar = ({ setCurrentPage }) => {
 
       {/* User ID and Logout Button */}
       <div className="flex items-center mt-4 sm:mt-0">
-        {userId && (
+        {user && (
           <span className="text-sm text-gray-500 mr-4 hidden md:block">
-            Logged in as: <span className="font-mono text-xs break-all">{userId}</span>
+            Logged in as: <span className="font-mono text-xs break-all">{user.email}</span>
           </span>
         )}
         <button

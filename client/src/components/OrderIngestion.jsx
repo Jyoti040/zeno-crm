@@ -10,6 +10,7 @@ const OrderIngestion = () => {
   const [message, setMessage] = useState('');
   const [customers, setCustomers] = useState([]);
   const [loadingCustomers, setLoadingCustomers] = useState(true);
+  const [customerSelected , setCustomerSelected] = useState('')
 
   // Fetch customers on component mount
   useEffect(() => {
@@ -32,6 +33,7 @@ const OrderIngestion = () => {
    * Handles changes to the main order form fields (customerId, amount).   */
   const handleChange = (e) => {
     setOrder({ ...order, [e.target.name]: e.target.value });
+    console.log("in order create ",order)
   };
 
   /**

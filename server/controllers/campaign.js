@@ -143,7 +143,7 @@ const createCampaign = async (req, res , next) => {
 
         // Asynchronously send messages (in a real app, this would be a background job/queue)
         for (const customer of audience) {
-            const personalizedMessage = message.replace('{customerName}', customer.name);
+            const personalizedMessage = messageTemplate.replace('{customerName}', customer.name);
             const { success, vendorMessageId, status } = await sendToDummyVendor(customer._id, personalizedMessage);
 
             const log = new CommunicationLog({

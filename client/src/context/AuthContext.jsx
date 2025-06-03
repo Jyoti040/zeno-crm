@@ -6,8 +6,8 @@ const AuthContext = createContext(null);
 
 // AuthProvider component to wrap your application
 export const AuthProvider = ({ children }) => {
-  // userId will now be set based on the backend's session status
-  const [userId, setUserId] = useState(null);
+  // user will now be set based on the backend's session status
+  const [user, setuser] = useState(null);
   const [loading, setLoading] = useState(true); // To indicate if auth state is being loaded
   const [error, setError] = useState(null); // To capture auth errors
 
@@ -19,20 +19,20 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      // setUserId(123)
+      // setuser(123)
       const res = await authApi.checkStatus();
       console.log("in auth context ",res)
       if (res.data.isAuthenticated) {
-        setUserId(res.data.user.id); // Set userId from backend response
+        setuser(res.data.user); // Set user from backend response
         // Optionally store other user details if needed, but session is primary
       } else {
-        setUserId(null); // Not authenticated
+        setuser(null); // Not authenticated
       }
     } catch (err) {
       // If the backend returns 401, it means not authenticated.
       // For other errors, it's a server issue.
       if (err.response && err.response.status === 401) {
-        setUserId(null);
+        setuser(null);
         console.log("Not authenticated (session expired or not logged in).");
       } else {
         setError("Failed to check authentication status. Server error.");
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
     setError(null);
     try {
       await authApi.logout();
-      setUserId(null); // Clear user ID on successful logout
+      setuser(null); // Clear user ID on successful logout
       // No need to clear localStorage for token as it's session-based
       console.log("Logged out successfully.");
     } catch (err) {
@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
   // Provide the auth state and functions to children components
   return (
-    <AuthContext.Provider value={{ userId, login, logout, loading, error }}>
+    <AuthContext.Provider value={{ user, login, logout, loading, error }}>
       {children}
     </AuthContext.Provider>
   );

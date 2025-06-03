@@ -61,6 +61,7 @@ export const campaignApi = {
     /**
      * Retrieves all existing campaigns.
      */
+    getCampaigns: () => api.get('/api/campaigns'),
 };
 
 // New API functions for Authentication (session-based)
