@@ -5,13 +5,13 @@ const router = express.Router();
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 router.get('/google/callback', passport.authenticate('google', {
-  successRedirect: 'http://localhost:5173/dashboard',
+  successRedirect: 'https://zeno-crm.onrender.com/dashboard',
   failureRedirect: '/'
 }));
 
 router.post('/login',
   passport.authenticate("local", {
-  successRedirect: 'http://localhost:5173/dashboard',
+  successRedirect: 'https://zeno-crm.onrender.com/dashboard',
   failureRedirect: '/'
 })
 )
