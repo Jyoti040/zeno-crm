@@ -45,10 +45,8 @@ export const AuthProvider = ({ children }) => {
 
   // On component mount, check authentication status
   useEffect(() => {
-      setTimeout(()=>{
         checkAuthStatus()
-      },200)
-  }, []); // Empty dependency array means this runs once on mount
+  }, [user]); // Empty dependency array means this runs once on mount
 
   /**
    * Initiates the login process by redirecting to the backend's Google OAuth endpoint.
