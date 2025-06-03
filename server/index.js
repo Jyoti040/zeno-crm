@@ -15,9 +15,21 @@ const CustomError = require('./error/CustomError')
 const NotFoundMiddleware = require('./middlewares/NotFound.js')
 const ErrorHandlerMiddleware = require('./middlewares/ErrorHandler.js')
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:10000',
+  'https://zeno-crm.onrender.com'
+];
+
 app.use(cors({
-     origin: ['http://localhost:5173','https://zeno-crm.onrender.com','http://localhost:10000/'], credentials: true 
-}))
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true
+}));
 app.use(cookieParser())
 app.use(express.json({ extended: false }));
 app.use(session({
@@ -26,9 +38,9 @@ app.use(session({
     saveUninitialized: false ,
     cookie: {
        maxAge: 1000 * 60 * 60 * 24, 
-    //    secure: false, 
-    //    httpOnly: true,
-    //    sameSite:'lax'
+    secure: true,            
+    httpOnly: true,
+    sameSite: 'None'  
   }
 }));
 app.use(passport.initialize());
