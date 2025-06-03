@@ -1,5 +1,7 @@
 # Xeno Mini CRM Platform
 
+![alt text](client/src/assets/crm-front.png)
+
 ## Overview
 
 This project is a Mini CRM Platform . It enables customer and order data ingestion, audience segmentation with a dynamic rule builder, personalized campaign delivery, and campaign history tracking.
