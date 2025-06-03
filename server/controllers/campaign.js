@@ -1,5 +1,5 @@
 const Segment = require('../models/segment')
-const Campaign = require('../models/Campaign');
+const Campaign = require('../models/campaign');
 const Customer = require('../models/customer');
 const CommunicationLog = require('../models/communicationLog');
 const CustomAPIError = require('../error/CustomError')
