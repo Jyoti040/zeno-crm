@@ -52,7 +52,7 @@ const CampaignCreation = () => {
                 segmentId: selectedSegment,
                 messageTemplate,
             });
-            setMessage(`Campaign "${res.data.name}" initiated successfully!`); // Display success message
+            setMessage(`Campaign initiated successfully!`); // Display success message
             // Reset form fields
             setCampaignName('');
             setSelectedSegment('');

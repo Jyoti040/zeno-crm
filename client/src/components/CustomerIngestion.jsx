@@ -33,7 +33,7 @@ const CustomerIngestion = () => {
     try {
       // Call the API to add a new customer
       const res = await customerApi.addCustomer(customer);
-      setMessage(`Customer "${res.data.name}" added successfully!`); // Display success message
+      setMessage(`Customer added successfully!`); // Display success message
       // Clear the form fields after successful submission
       setCustomer({ name: '', email: '', phone: '', address: '' });
     } catch (err) {

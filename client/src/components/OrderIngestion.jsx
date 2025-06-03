@@ -80,7 +80,7 @@ const OrderIngestion = () => {
 
     try {
       const res = await orderApi.addOrder(order);
-      setMessage(`Order for Customer ID "${res.data.customerId}" added successfully!`);
+      setMessage(`Order for Customer added successfully!`);
       // Clear form after submission
       setOrder({ customerId: '', amount: '', products: [{ name: '', quantity: '', price: '' }] });
     } catch (err) {
