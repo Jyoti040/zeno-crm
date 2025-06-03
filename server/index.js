@@ -15,6 +15,8 @@ const CustomError = require('./error/CustomError')
 const NotFoundMiddleware = require('./middlewares/NotFound.js')
 const ErrorHandlerMiddleware = require('./middlewares/ErrorHandler.js')
 
+app.set('trust proxy', 1);
+
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:10000',
