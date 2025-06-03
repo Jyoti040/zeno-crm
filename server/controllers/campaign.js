@@ -1,6 +1,6 @@
 const Segment = require('../models/segment')
 const Campaign = require('../models/Campaign');
-const Customer = require('../models/Customer');
+const Customer = require('../models/customer');
 const CommunicationLog = require('../models/communicationLog');
 const CustomAPIError = require('../error/CustomError')
 const axios = require('axios'); 

@@ -1,4 +1,4 @@
-const Customer = require('../models/Customer');
+const Customer = require('../models/customer');
 const CustomAPIError = require('../error/CustomError')
 
 const ingestCustomer = async (req, res , next) => {

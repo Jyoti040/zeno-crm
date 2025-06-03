@@ -1,5 +1,5 @@
 const Order = require("../models/order")
-const Customer = require('../models/Customer');
+const Customer = require('../models/customer');
 const CustomAPIError = require('../error/CustomError')
 
 const ingestOrder = async (req, res,next) => {
